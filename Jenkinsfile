@@ -38,7 +38,7 @@ pipeline {
                     terraform plan -var="app_version=${params.appVersion}"
                """
             }
-          }
+          } 
           stage('Deploy'){
              steps {
                sh """
