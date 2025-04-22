@@ -26,7 +26,7 @@ pipeline {
           stage('Init'){
             steps {
                sh """
-                    cd 07-backend
+                    cd terraform
                     terraform init
                """
             }
@@ -34,7 +34,7 @@ pipeline {
           stage('Plan'){
             steps {
                sh """
-                    cd 07-backend
+                    cd terraform
                     terraform plan -var="app_version=${params.appVersion}"
                """
             }
@@ -42,7 +42,7 @@ pipeline {
           stage('Deploy'){
              steps {
                sh """
-                    cd 07-backend
+                    cd terraform
                     terraform apply -auto-approve -var="app_version=${params.appVersion}"
                 """
              }
