@@ -43,7 +43,7 @@ pipeline {
              steps {
                sh """
                     cd 10-frontend
-                    terraform apply -auto-approve -var="app_version=${params.appVersion}"
+                    terraform destroy -auto-approve -var="app_version=${params.appVersion}"
                 """
              }
            }
