@@ -11,10 +11,10 @@ pipeline {
     // parameters {
     //     string(name: 'appVersion', defaultValue: '1.0.0', description: 'What is the application version?')
     // }
-    environment {
+    //environment {
         //def appVersion = ''
         //nexusUrl = 'jenkins-nexus.daws2025.online:8081'
-    }
+    //}
     stages {
         // stage('print the version'){
         //     steps {
