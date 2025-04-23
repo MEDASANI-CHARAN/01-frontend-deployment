@@ -35,7 +35,7 @@ pipeline {
             steps {
                sh """
                     cd 10-frontend
-                    terraform plan"
+                    terraform plan
                """
             }
           } 
@@ -43,7 +43,7 @@ pipeline {
              steps {
                sh """
                     cd 10-frontend
-                    terraform apply -auto-approve"
+                    terraform apply -auto-approve
                 """
              }
            }
