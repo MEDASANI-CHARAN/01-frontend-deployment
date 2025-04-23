@@ -8,21 +8,21 @@ pipeline {
                 disableConcurrentBuilds()
                 ansiColor('xterm')
             }
-    // parameters {
-    //     string(name: 'appVersion', defaultValue: '1.0.0', description: 'What is the application version?')
-    // }
-    //environment {
-        //def appVersion = ''
+    parameters {
+        string(name: 'appVersion', defaultValue: '1.0.0', description: 'What is the application version?')
+    }
+    environment {
+        def appVersion = ''
         //nexusUrl = 'jenkins-nexus.daws2025.online:8081'
-    //}
+    }
     stages {
-        // stage('print the version'){
-        //     steps {
-        //         script {
-        //         echo "Application version: ${params.appVersion}"
-        //       }
-        //     }
-        //   }
+        stage('print the version'){
+            steps {
+                script {
+                echo "Application version: ${params.appVersion}"
+              }
+            }
+          }
           stage('Init'){
             steps {
                sh """
@@ -35,7 +35,7 @@ pipeline {
             steps {
                sh """
                     cd 10-frontend
-                    terraform plan
+                    terraform plan -var="app_version=${params.appVersion}"
                """
             }
           } 
@@ -43,7 +43,7 @@ pipeline {
              steps {
                sh """
                     cd 10-frontend
-                    terraform apply -auto-approve
+                    terraform apply -auto-approve -var="app_version=${params.appVersion}"
                 """
              }
            }
