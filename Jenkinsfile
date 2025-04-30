@@ -35,7 +35,7 @@ pipeline {
             steps {
                sh """
                     cd 10-frontend
-                    terraform plan
+                    terraform plan -var="app_version=${params.appVersion}"
                """
             }
           } 
@@ -43,7 +43,7 @@ pipeline {
              steps {
                sh """
                     cd 10-frontend
-                    terraform destroy -auto-approve
+                    terraform apply -auto-approve -var="app_version=${params.appVersion}"
                 """
              }
            }
